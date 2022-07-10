@@ -1,53 +1,72 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "new home",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "IntroIntent",
-          "slots": [],
-          "samples": [
-            "start",
-            "launch the game",
-            "start the game",
-            "i am ready",
-            "yes i am ready"
-          ]
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
-        },
-        {
-          "name": "Pole_First",
-          "slots": [],
-          "samples": [
-            "lets land on the poles",
-            "poles",
-            "land me on the poles",
-            "land on the poles",
-            "The Poles"
-          ]
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "new home",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "IntroIntent",
+                    "slots": [],
+                    "samples": [
+                        "start",
+                        "launch the game",
+                        "start the game",
+                        "i am ready",
+                        "yes i am ready"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "Pole_First",
+                    "slots": [],
+                    "samples": [
+                        "lets land on the poles",
+                        "poles",
+                        "land me on the poles",
+                        "land on the poles",
+                        "The Poles"
+                    ]
+                },
+                {
+                    "name": "Pole_Second",
+                    "slots": [],
+                    "samples": [
+                        "take liquid back",
+                        "liquid back to the ship",
+                        "take liquid",
+                        "Take liquid back to the ship"
+                    ]
+                },
+                {
+                    "name": "Pole_Third",
+                    "slots": [],
+                    "samples": [
+                        "amputate hand to prevent frostbite from spreading",
+                        "amputate the hand",
+                        "amputate",
+                        "amputate my hand"
+                    ]
+                }
+            ],
+            "types": []
         }
-      ],
-      "types": []
     }
-  },
-  "version": "4"
 }
