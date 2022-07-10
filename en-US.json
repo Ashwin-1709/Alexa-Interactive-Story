@@ -1,0 +1,53 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "new home",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "IntroIntent",
+          "slots": [],
+          "samples": [
+            "start",
+            "launch the game",
+            "start the game",
+            "i am ready",
+            "yes i am ready"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "Pole_First",
+          "slots": [],
+          "samples": [
+            "lets land on the poles",
+            "poles",
+            "land me on the poles",
+            "land on the poles",
+            "The Poles"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "4"
+}
