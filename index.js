@@ -21,7 +21,7 @@ const protagonist = [
     "\n\"Zack, set the coordinates for the poles. I think we have a better chance of surviving there.\"",
     "\n\"All right guys! We have landed. Zack and John, stay back and try to repair the engine, while me, Sara and Professor go out to explore the terrain.\"",
     "\n\"Maybe it’s something dangerous, but maybe it’s something useful! Who knows?! I better get some of it for research and we can run some tests back on the ship.\"" , 
-    "\n\"Ahhh! My hand is becoming numb\nyou scream.\"", 
+    "\n\"Ahhh! My hand is becoming numb.\"", 
     "\n\"No! I cannot risk the mission. Sara, go ahead, amputate it.\"", 
     "\n\"And why is that Professor?\""
     ]
@@ -90,7 +90,7 @@ const Pole_SecondHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Pole_Second';
     },
     handle(handlerInput) {
-        const speakOutput = story[5] + switchVoice(protagonist[4] , "Matthew") + switchVoice(sara[0] , "Salli") + story[6];
+        const speakOutput = story[5] + switchVoice(protagonist[4] , "Matthew") + " You Scream. " + switchVoice(sara[0] , "Salli") + story[6];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
