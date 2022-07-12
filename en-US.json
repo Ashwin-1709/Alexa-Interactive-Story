@@ -66,6 +66,53 @@
                         "amputate",
                         "amputate my hand"
                     ]
+                },
+                {
+                    "name": "LifeOrDeath_ReachShip",
+                    "slots": [],
+                    "samples": [
+                        "treat at ship",
+                        "head to the ship",
+                        "reach ship",
+                        "try reaching before it's too late",
+                        "try reaching the ship",
+                        "Try making it back to the ship"
+                    ]
+                },
+                {
+                    "name": "ExplorationOfCaves_FollowAdvice",
+                    "slots": [],
+                    "samples": [
+                        "follow professor",
+                        "continue exploring",
+                        "explore",
+                        "continue exploration",
+                        "follow the advice",
+                        "follow the professors advice and continue exploration"
+                    ]
+                },
+                {
+                    "name": "Survival_LongTerm",
+                    "slots": [],
+                    "samples": [
+                        "plan out ration",
+                        "ration",
+                        "long term",
+                        "ration resources",
+                        "think long term",
+                        "think long term and ration resources for later use"
+                    ]
+                },
+                {
+                    "name": "Survival_PlanLater",
+                    "slots": [],
+                    "samples": [
+                        "lets eat",
+                        "plan later",
+                        "i am tired and hungry let's eat",
+                        "lets eat i am famished",
+                        "plan it later"
+                    ]
                 }
             ],
             "types": []
