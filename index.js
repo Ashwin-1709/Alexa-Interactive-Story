@@ -6,39 +6,67 @@
 const Alexa = require('ask-sdk-core');
 const intro = "Welcome! You are selected to be part of the first batch of astronauts going to Pluto. Experience the journey with your fellow astronauts filled with many challenges. Are you ready to embark on this exciting adventure?!"
 const story = [
-    "\nIt’s been a year since you retired from the Space Federation and are now settled in Metropolis. It was a pleasant surprise as you were out for just another evening walk when you encountered your old friend, Professor Gilbert, from the Federation." ,
-    "\nYou smile and shake hands with the Professor. You accepted the mission.\n After taking the proposal, you return to the Space Federation to train for the mission. You will be leading the team consisting of yourself, Professor Gilbert, Zack (The Engineer), John (The Astronaut), and Sara (The Doctor). After going through rigorous training, the day of the launch is tomorrow. The shuttle blasts off to space, and the journey begins. As soon as the rocket escapes the Earth's atmosphere, one of its engines fails. You tell everyone to keep calm and send Zack to check if there is a way to get the engine back online. Zack informs you that the engine is completely blown off but using the one working engine, they can still reach Pluto but cannot take off again till the engine is repaired or replaced. You enter Pluto's orbit. You are posed with the decision of whether to land on the sandy dunes or the valley of mountains.\nMake a decision: The Sandy Dunes\n or\n the The Valley of Mountains." ,
-    "\nZack nods and goes into the cockpit to set in the coordinates. You have finally landed in the valley. The temperature outside is -50 degrees, skies filled with darkness, nothing but empty lands stretching for as far as you can see.",
-    "\nYou decide to wear your protective suits and start exploring. You enter a cave. While exploring the cave, you find a strange transparent crystal emitting fumes near the top of a stone." ,
-    "\nDo you think you should take the Professor’s advice and stay away or collect some of it for research later?\n Take a choice: Take the crystal back to the spaceship for research\n or\n Follow the Professor’s advice and continue exploration." ,
-    "\nYou decide to take a sample of the crystal. While trying to store the crystal in a container, you accidentally break the container exposing the crystal fumes to your suit. The fumes are corrosive and burn through your suit, exposing your skin to -50 degree temperature resulting in serious frostbite.",
-    "\nSara collects another sample of the crystal to bring it back to the ship. Do you think you have enough time to reach the ship or it would be better to amputate your hand and not risk the mission.\n Make a decision:  Try making it back to the ship before the frostbite spreads\n or\n Amputate your hand to prevent the frostbite from spreading." , 
-    "\nSara proceeds with the amputation to prevent the frostbite spread. After fighting the strong and cold winds of the poles, the team finally gets back to the spaceship. Meanwhile, the Professor begins experiments on the crystal.", 
-    "\nThe team quickly builds a shelter and gets to work on making the heater with the space fuel. With an energy and water source in place, now you can start growing food too! The soil of Pluto is rich in minerals, and the melted ice caps provide sufficient water for irrigation. With the mission's objectives met, you have successfully completed your mission, and you call upon more people to come and inhabit Pluto! Congratulations, you have completed one of the eight possible endings!"
+    /*0*/"\nIt’s been a year since you retired from the Space Federation and are now settled in Metropolis. It was a pleasant surprise as you were out for just another evening walk when you encountered your old friend, Professor Gilbert, from the Federation." ,
+    /*1*/"\nYou smile and shake hands with the Professor. You accepted the mission.\n After taking the proposal, you return to the Space Federation to train for the mission. You will be leading the team consisting of yourself, Professor Gilbert, Zack (The Engineer), John (The Astronaut), and Sara (The Doctor). After going through rigorous training, the day of the launch is tomorrow. The shuttle blasts off to space, and the journey begins. As soon as the rocket escapes the Earth's atmosphere, one of its engines fails. You tell everyone to keep calm and send Zack to check if there is a way to get the engine back online. Zack informs you that the engine is completely blown off but using the one working engine, they can still reach Pluto but cannot take off again till the engine is repaired or replaced. You enter Pluto's orbit. You are posed with the decision of whether to land on the sandy dunes or the valley of mountains.\nMake a decision: The Sandy Dunes\n or\n the The Valley of Mountains." ,
+    /*2*/"\nZack nods and goes into the cockpit to set in the coordinates. You have finally landed in the valley. The temperature outside is -50 degrees, skies filled with darkness, nothing but empty lands stretching for as far as you can see.",
+    /*3*/"\nYou decide to wear your protective suits and start exploring. You enter a cave. While exploring the cave, you find a strange transparent crystal emitting fumes near the top of a stone." ,
+    /*4*/"\nDo you think you should take the Professor’s advice and stay away or collect some of it for research later?\n Take a choice: Take the crystal back to the spaceship for research\n or\n Follow the Professor’s advice and continue exploration." ,
+    /*5*/"\nYou decide to take a sample of the crystal. While trying to store the crystal in a container, you accidentally break the container exposing the crystal fumes to your suit. The fumes are corrosive and burn through your suit, exposing your skin to -50 degree temperature resulting in serious frostbite.",
+    /*6*/"\nSara collects another sample of the crystal to bring it back to the ship. Do you think you have enough time to reach the ship or it would be better to amputate your hand and not risk the mission.\n Make a decision:  Try making it back to the ship before the frostbite spreads\n or\n Amputate your hand to prevent the frostbite from spreading." , 
+    /*7*/"\nSara proceeds with the amputation to prevent the frostbite spread. After fighting the strong and cold winds of the poles, the team finally gets back to the spaceship. Meanwhile, the Professor begins experiments on the crystal.", 
+    /*8*/"\nThe team quickly builds a shelter and gets to work on making the heater with the space fuel. With an energy and water source in place, now you can start growing food too! The soil of Pluto is rich in minerals, and the melted ice caps provide sufficient water for irrigation. With the mission's objectives met, you have successfully completed your mission, and you call upon more people to come and inhabit Pluto! Congratulations, you have completed one of the eight possible endings!",
+    /*9*/"\nYou decide against amputation of your hand and try to make it back to the spaceship. The strong and cold winds of the poles paralyze your hand as you try to make your way towards the ship. Eventually, the frostbite gets the better of you and you succumb to it before reaching the ship.",               
+    /*10*/"\nYou take the professor's advice and stay away from the liquid. The team heads out of the cave to explore further. Soon you come across an ice cap. So you decide to set up a shelter near and try to figure out how to melt the ice. You start building the shelter, which takes all-day.",
+    /*11*/"\nYou go inside the storage unit but you realize most of the food is frozen beyond use and can't be eaten. Your fellow astronauts are famished but if you want to survive long term you've to come up with a plan.\n Make a decision: Replenish yourself and the team right now and plan it out later\n or\n Think long-term and ration resources for later use.",   
+    /*12*/"\nIt takes a lot of convincing but you feed everyone the bare minimum and save the rest for growing crops. The soil of Pluto is rich with minerals, all you need is water, seeds, and light.",
+    /*13*/"\nThe heater is constructed and now you can melt all the water in the ice caps and use it for irrigation and drinking! With a shelter, water, food supply, and an energy source harnessed, you successfully fulfilled your mission and sent back a call to earth to send more people and supplies to Pluto. Congratulations, you have completed one of the eight possible endings!",  
+    /*14*/"\nLooking at the condition of your team, exhausted and famished, you decide to use whatever resources you have available right now to replenish yourselves and the team.",  
+    /*15*/"\nSoon with all the resources exhausted and nothing left in sight, the team starts searching for alternate food sources on Mars but come up empty-handed. As a last call for help, you contact the Federation for reinforcement and supplies. Due to logistical issues, by the time the supplies reach you, it’s too late. Congratulations, you have completed one of the eight possible endings!",   
     ]
 const protagonist = [
-    "\n\"Professor, it’s really nice to see you after so long. What brings you here to Metropolis today?\"" ,
-    "\n\"Zack, set the coordinates for the valley. I think we have a better chance of surviving there.\"",
-    "\n\"All right guys! We have landed. Zack and John, stay back and try to repair the engine, while me, Sara and Professor go out to explore the terrain.\"",
-    "\n\"Maybe it’s something dangerous, but maybe it’s something useful! Who knows?! I better get some of it for research and we can run some tests back on the ship.\"" , 
-    "\n\"Ahhh! My hand is becoming numb.\"", 
-    "\n\"No! I cannot risk the mission. Sara, go ahead, amputate it.\"", 
-    "\n\"And why is that Professor?\""
+    /*0*/"\n\"Professor, it’s really nice to see you after so long. What brings you here to Metropolis today?\"" ,
+    /*1*/"\n\"Zack, set the coordinates for the valley. I think we have a better chance of surviving there.\"",
+    /*2*/"\n\"All right guys! We have landed. Zack and John, stay back and try to repair the engine, while me, Sara and Professor go out to explore the terrain.\"",
+    /*3*/"\n\"Maybe it’s something dangerous, but maybe it’s something useful! Who knows?! I better get some of it for research and we can run some tests back on the ship.\"" , 
+    /*4*/"\n\"Ahhh! My hand is becoming numb.\"", 
+    /*5*/"\n\"No! I cannot risk the mission. Sara, go ahead, amputate it.\"", 
+    /*6*/"\n\"And why is that Professor?\"",
+    /*7*/"\n\"No, I think I can make it to the ship before it spreads.\"",
+    /*8*/"\n\"Yeah! Good job guys ! Wait, I'll go and check our ration and set it up.\"",
+    /*9*/"\n\"Bad news team, we have damage in the storage unit during landing. I am afraid we’ll have to ration for now.\"",
+    /*10*/"\n\"I know it’s hard guys, but without rationing we won’t last a week here. Let’s think about the bigger picture and plan something out.\"",
+    /*11*/"\n\"Guys, we have food sorted now! Congrats everyone on coming together and figuring out a way through hard times. Now it’s time we look for a fuel source to melt the ice caps and make this mission a success.\"",
+    /*12*/"\n\"Zack, remember that old engine we have that we replaced with a new one after landing. Let’s fashion it into a nuclear-powered heater.\"",
+    /*13*/"\n\"Team, let’s have a meal right now. We have some food left but I guess we’ll have to start looking for alternative sources too.\"",
     ]
 const professor = [
-    "\n\"I am currently a part of the team for our mission, 'A New Home' which is a team of 5 astronauts who will set up shelter, look for possible sources of fuel, and help begin the colonization of Pluto. But we are still one short on the team. Which reminds me, you can be the perfect candidate for the mission. Your aerospace knowledge and your experience can really come in handy. What do you say, another mission, like the old times?\"",
-    "\n\"I think you should stay away from the crystal as we don’t know what it is. Those fumes look dangerous.\"",
-    "\n\"Well, I guess I should thank you, captain, for going ahead with getting this crystal for research.\"" ,
-    "\n\"This fumes emitted by the crystal have a very high calorific value, almost similar to the fuel we use on our ship! We can even use it to heat the water and melt the polar ice caps. I suppose we should set up a shelter after making a heater to keep us warm and then set it up to melt the ice and snow for water.\""    
+    /*0*/"\n\"I am currently a part of the team for our mission, 'A New Home' which is a team of 5 astronauts who will set up shelter, look for possible sources of fuel, and help begin the colonization of Pluto. But we are still one short on the team. Which reminds me, you can be the perfect candidate for the mission. Your aerospace knowledge and your experience can really come in handy. What do you say, another mission, like the old times?\"",
+    /*1*/"\n\"I think you should stay away from the crystal as we don’t know what it is. Those fumes look dangerous.\"",
+    /*2*/"\n\"Well, I guess I should thank you, captain, for going ahead with getting this crystal for research.\"" ,
+    /*3*/"\n\"This fumes emitted by the crystal have a very high calorific value, almost similar to the fuel we use on our ship! We can even use it to heat the water and melt the polar ice caps. I suppose we should set up a shelter after making a heater to keep us warm and then set it up to melt the ice and snow for water.\""    
     ]
 const sara = [
-    "\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\""
+    /*0*/"\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\""
+    ]
+const john = [
+    /*0*/"\n\"Hey Cap! Everyone is starving, how about we have a meal and call it a day.\""
+    ]
+const zack = [
+    /*0*/"\n\"I can’t keep going on without food captain!\"",
+    /*1*/"\n\"On it Skipper!\"",
     ]
 function switchVoice(text,voice_name) {
   if (text){
     return "<voice name='" + voice_name + "'>" + text + "</voice>"
   }
 }
+
+function switchVoiceLang(lang,text,voice_name) {
+  if (text){
+    return "<lang xml:lang='" + lang + "'><voice name='" + voice_name + "'>" + text + "</voice></lang>"
+  }
+}
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -94,7 +122,7 @@ const ExplorationOfCaves_TakeCrystalHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Make a decision:  Try making it back to the ship before the frostbite spreads or Amputate your hand to prevent the frostbite from spreading.')
+            .reprompt('Make a decision: Try making it back to the ship before the frostbite spreads or Amputate your hand to prevent the frostbite from spreading.')
             .getResponse();
     }
 };
@@ -113,6 +141,67 @@ const LifeOrDeath_AmputateHandler = {
             .getResponse();
     }
 }
+
+const LifeOrDeath_ReachShipHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LifeOrDeath_ReachShip';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[7] , "Joey") + story[9];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .getResponse();
+    }
+}
+
+const ExplorationOfCaves_FollowAdviceHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ExplorationOfCaves_FollowAdvice';
+    },
+    handle(handlerInput) {
+        const speakOutput = story[10] + switchVoiceLang("en-AU",john[0] , "Russell") + " says John. " + switchVoice(protagonist[8] , "Joey") + story[11];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Make a decision: Replenish yourself and the team right now and plan it out later\n or\n Think long-term and ration resources for later use.')
+            .getResponse();
+    }
+};
+
+const Survival_LongTermHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Survival_LongTerm';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[9] , "Joey") + switchVoiceLang("en-GB",zack[0] , "Brian") + switchVoice(protagonist[10] , "Joey") + story[12] + switchVoice(protagonist[11] , "Joey") + "You remember about the old nuclear-powered engine in your ship. " + switchVoice(protagonist[12] , "Joey") + switchVoiceLang("en-GB",zack[1] , "Brian") + story[13];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .getResponse();
+    }
+}
+
+const Survival_PlanLaterHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Survival_PlanLater';
+    },
+    handle(handlerInput) {
+        const speakOutput = story[14] + switchVoice(protagonist[13] , "Joey") + story[15];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .getResponse();
+    }
+}
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -227,6 +316,10 @@ exports.handler = Alexa.SkillBuilders.custom()
         LandingSpot_ValleyHandler,
         ExplorationOfCaves_TakeCrystalHandler,
         LifeOrDeath_AmputateHandler,
+        LifeOrDeath_ReachShipHandler,
+        ExplorationOfCaves_FollowAdviceHandler,
+        Survival_LongTermHandler,
+        Survival_PlanLaterHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
