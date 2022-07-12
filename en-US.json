@@ -35,28 +35,30 @@
                     "samples": []
                 },
                 {
-                    "name": "Pole_First",
+                    "name": "LandingSpot_Valley",
                     "slots": [],
                     "samples": [
-                        "lets land on the poles",
-                        "poles",
-                        "land me on the poles",
-                        "land on the poles",
-                        "The Poles"
+                        "the valley",
+                        "lets land in the valley",
+                        "valley",
+                        "land me in the valley of mountains",
+                        "land in the valley",
+                        "the valley of mountains"
                     ]
                 },
                 {
-                    "name": "Pole_Second",
+                    "name": "ExplorationOfCaves_TakeCrystal",
                     "slots": [],
                     "samples": [
-                        "take liquid back",
-                        "liquid back to the ship",
-                        "take liquid",
-                        "Take liquid back to the ship"
+                        "crystal",
+                        "take crystal back",
+                        "crystal back to the ship",
+                        "take crystal",
+                        "Take crystal back to the ship"
                     ]
                 },
                 {
-                    "name": "Pole_Third",
+                    "name": "LifeOrDeath_Amputate",
                     "slots": [],
                     "samples": [
                         "amputate hand to prevent frostbite from spreading",
