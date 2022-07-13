@@ -21,7 +21,15 @@ const story = [
     /*12*/"\nIt takes a lot of convincing but you feed everyone the bare minimum and save the rest for growing crops. The soil of Pluto is rich with minerals, all you need is water, seeds, and light.",
     /*13*/"\nThe heater is constructed and now you can melt all the water in the ice caps and use it for irrigation and drinking! With a shelter, water, food supply, and an energy source harnessed, you successfully fulfilled your mission and sent back a call to earth to send more people and supplies to Pluto. Congratulations, you have completed one of the eight possible endings!",  
     /*14*/"\nLooking at the condition of your team, exhausted and famished, you decide to use whatever resources you have available right now to replenish yourselves and the team.",  
-    /*15*/"\nSoon with all the resources exhausted and nothing left in sight, the team starts searching for alternate food sources on Mars but come up empty-handed. As a last call for help, you contact the Federation for reinforcement and supplies. Due to logistical issues, by the time the supplies reach you, it’s too late. Congratulations, you have completed one of the eight possible endings!",   
+    /*15*/"\nSoon with all the resources exhausted and nothing left in sight, the team starts searching for alternate food sources on Pluto but come up empty-handed. As a last call for help, you contact the Federation for reinforcement and supplies. Due to logistical issues, by the time the supplies reach you, it’s too late. Congratulations, you have completed one of the eight possible endings!",   
+    /*16*/"\nYou land near the sandy dunes as the engine sputters one last time. The team heads out in the sweltering heat and has to quickly find a place to build a shelter. So they find shade behind a big rock and start building the shelter. But soon you observe a sandstorm approaching you." ,
+    /*17*/ "\nThe shelter is half-built and abandoning it now would mean losing all the resources. It’s your call whether to try and complete the shelter before the sandstorm hits or abandon the shelter and return to the ship." ,
+    /*18*/ "\nThrough a combined team effort they manage to finish building the shelter in just enough time to get in and shield themselves from the storm. After the storm is over, you decide to go and explore the nearby crater." ,
+    /*19*/ "\nAfter exploring and gathering the necessary resources from the crater, you decide to head back to the ship, while climbing back up the crater, one of the connected harnesses gets broken. ",
+    /*20*/ "\nEveryone tries to grab onto whatever they can and are left hanging by the walls of the crater. You, being on the top, have to decide whether to use the leftover harness to get back to the ship abandon the team and bring the necessary equipment from the ship to help them get back, or coordinate with your team to get them back up one by one knowing that the harness is already in a bad condition and time is crucial. " ,
+    /*21*/ "\nYou manage to get back to the top using the leftover harness, you carefully get your team to hold on to the harness and rescue them one by one. You return back to the ship along with your team. " ,
+    /*22*/ "\nHaving retrieved the required fuel and resources, you finally contact the federation and inform them about the abundant fuel and resources available and call for more people to come to Pluto. Protagonist smiles and looks at the Professor as they finish yet another adventure together. Congratulations ! You have finished one of the eight possible endings !" , 
+    /*23*/ "\nYou saved yourself and quickly ran back to the spaceship to grab some harnesses and ropes but as soon as you reached the crater the rope began to slip and everyone fell off the crater leading to their death. Now you cannot retrieve more fuel yourself so you survive off of the supplies for your teammates and wait for reinforcements to take you back. You get on board and head back home for maybe another shot at colonizing Pluto. Congratulations ! You have completed one of the eight possible endings!"
     ]
 const protagonist = [
     /*0*/"\n\"Professor, it’s really nice to see you after so long. What brings you here to Metropolis today?\"" ,
@@ -37,13 +45,20 @@ const protagonist = [
     /*10*/"\n\"I know it’s hard guys, but without rationing we won’t last a week here. Let’s think about the bigger picture and plan something out.\"",
     /*11*/"\n\"Guys, we have food sorted now! Congrats everyone on coming together and figuring out a way through hard times. Now it’s time we look for a fuel source to melt the ice caps and make this mission a success.\"",
     /*12*/"\n\"Zack, remember that old engine we have that we replaced with a new one after landing. Let’s fashion it into a nuclear-powered heater.\"",
-    /*13*/"\n\"Team, let’s have a meal right now. We have some food left but I guess we’ll have to start looking for alternative sources too.\"",
+    /*13*/"\n\"Team, let’s have a meal right now. We have some food left but I guess we’ll have to start looking for alternative sources too.\"" , 
+    /*14*/"\"Look out ! there is a sandstorm approaching from the south ! \"",
+    /*15*/"\n\"Come on guys ! let's pick up the pace and finish building the shelter before the storms hits. \"" ,
+    /*16*/ "\n\"Everybody hold on ! don’t make any sudden movements ! some part of the harness is still intact.\"" ,
+    /*17*/ "\n\" let’s use the leftover part of the harness to climb up one by one. I will go first , and hold the other end from top.\"" , 
+    /*18*/ "\n\"I will use the leftover harness to get back to the spaceship and bring the necessary equipments to rescue you all ! Hold on tight till I return ! \""
     ]
 const professor = [
     /*0*/"\n\"I am currently a part of the team for our mission, 'A New Home' which is a team of 5 astronauts who will set up shelter, look for possible sources of fuel, and help begin the colonization of Pluto. But we are still one short on the team. Which reminds me, you can be the perfect candidate for the mission. Your aerospace knowledge and your experience can really come in handy. What do you say, another mission, like the old times?\"",
     /*1*/"\n\"I think you should stay away from the crystal as we don’t know what it is. Those fumes look dangerous.\"",
     /*2*/"\n\"Well, I guess I should thank you, captain, for going ahead with getting this crystal for research.\"" ,
-    /*3*/"\n\"This fumes emitted by the crystal have a very high calorific value, almost similar to the fuel we use on our ship! We can even use it to heat the water and melt the polar ice caps. I suppose we should set up a shelter after making a heater to keep us warm and then set it up to melt the ice and snow for water.\""    
+    /*3*/"\n\"This fumes emitted by the crystal have a very high calorific value, almost similar to the fuel we use on our ship! We can even use it to heat the water and melt the polar ice caps. I suppose we should set up a shelter after making a heater to keep us warm and then set it up to melt the ice and snow for water.\"" ,
+    /*4*/"\n\"According to the radar , it's moving at a speed of 30 m/s , we have 15 mins before it strikes us. \"" ,
+    /*5*/ "\n\"Rocks of the lower belt of the crater are rich in minerals , we can extract some fuel from them.\""
     ]
 const sara = [
     /*0*/"\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\""
@@ -54,6 +69,7 @@ const john = [
 const zack = [
     /*0*/"\n\"I can’t keep going on without food captain!\"",
     /*1*/"\n\"On it Skipper!\"",
+    /*2*/"\n\"We did it ! we have successfully retrieved the fuel and required resources to get our ship back on feet ! \""
     ]
 function switchVoice(text,voice_name) {
   if (text){
@@ -111,6 +127,22 @@ const LandingSpot_ValleyHandler = {
             .getResponse();
     }
 };
+
+const LandingSpot_SandyHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LandingSpot_Sandy';
+    },
+    handle(handlerInput) {
+        const speakOutput = story[16] + switchVoice(protagonist[14] , "Joey") + switchVoice(professor[4] , "Matthew") + story[17];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('It’s your call whether to try and complete the shelter before the sandstorm hits or abandon the shelter and return to the ship.')
+            .getResponse();
+    }
+};
+
 
 const ExplorationOfCaves_TakeCrystalHandler = {
     canHandle(handlerInput) {
@@ -198,6 +230,49 @@ const Survival_PlanLaterHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .getResponse();
+    }
+}
+const Sandstorm_buildHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_build';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[15] , "Joey") + story[18] + switchVoice(professor[5] , "Matthew") + story[19] + switchVoice(protagonist[16] , "Joey") + story[20];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Decide whether to use the leftover harness to get back to the ship abandon the team and bring the necessary equipment from the ship to help them get back, or coordinate with your team to get them back up one by one knowing that the harness is already in a bad condition and time is crucial.')
+            .getResponse();
+    }
+}
+const RescueMission_rescueHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_rescue';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[17] , "Joey") + story[21] + switchVoiceLang("en-GB",zack[2] , "Brian") + story[22];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .getResponse();
+    }
+}
+
+const RescueMission_abandonHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_abandon';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[18] , "Joey") + story[23];
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! you have completed one of the eight endings.')
             .getResponse();
     }
 }
@@ -314,12 +389,16 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         IntroIntentHandler,
         LandingSpot_ValleyHandler,
+        LandingSpot_SandyHandler,
         ExplorationOfCaves_TakeCrystalHandler,
         LifeOrDeath_AmputateHandler,
         LifeOrDeath_ReachShipHandler,
         ExplorationOfCaves_FollowAdviceHandler,
         Survival_LongTermHandler,
         Survival_PlanLaterHandler,
+        Sandstorm_buildHandler,
+        RescueMission_rescueHandler,
+        RescueMission_abandonHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
