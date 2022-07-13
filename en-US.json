@@ -113,6 +113,61 @@
                         "lets eat i am famished",
                         "plan it later"
                     ]
+                },
+                {
+                    "name": "LandingSpot_Sandy",
+                    "slots": [],
+                    "samples": [
+                        "land in the dunes",
+                        "dunes",
+                        "land in the sandy dunes",
+                        "lets land in the sandy dunes",
+                        "land me in the sandy dunes",
+                        "the sandy dunes"
+                    ]
+                },
+                {
+                    "name": "Sandstorm_build",
+                    "slots": [],
+                    "samples": [
+                        "try to complete the shelter",
+                        "try to build the shelter before the storm hits",
+                        "try to build the shelter",
+                        "build the shelter before the storm hits",
+                        "build the shelter before the storm",
+                        "complete the shelter before the sandstorm hits",
+                        "complete the shelter before the storm hits",
+                        "build the shelter",
+                        "complete the shelter"
+                    ]
+                },
+                {
+                    "name": "RescueMission_rescue",
+                    "slots": [],
+                    "samples": [
+                        "try to bring everyone back",
+                        "coordinate to bring team back one by one",
+                        "coordinate with team to bring everyone back",
+                        "coordinate with team",
+                        "use the harness and bring everyone back",
+                        "bring everyone back",
+                        "rescue everyone back"
+                    ]
+                },
+                {
+                    "name": "RescueMission_abandon",
+                    "slots": [],
+                    "samples": [
+                        "get back to the ship and bring necessary reinforcements",
+                        "get back to the ship and bring necessary equipments",
+                        "get back to the ship",
+                        "leave first and bring reinforcements",
+                        "bring reinforcements ",
+                        "save myself first",
+                        "abandon the team and come back",
+                        "abandon the team",
+                        "leave to get reinforcements for the team"
+                    ]
                 }
             ],
             "types": []
