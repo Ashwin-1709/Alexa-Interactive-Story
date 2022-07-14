@@ -29,7 +29,16 @@ const story = [
     /*20*/ "\nEveryone tries to grab onto whatever they can and are left hanging by the walls of the crater. You, being on the top, have to decide whether to use the leftover harness to get back to the ship abandon the team and bring the necessary equipment from the ship to help them get back, or coordinate with your team to get them back up one by one knowing that the harness is already in a bad condition and time is crucial. " ,
     /*21*/ "\nYou manage to get back to the top using the leftover harness, you carefully get your team to hold on to the harness and rescue them one by one. You return back to the ship along with your team. " ,
     /*22*/ "\nHaving retrieved the required fuel and resources, you finally contact the federation and inform them about the abundant fuel and resources available and call for more people to come to Pluto. Protagonist smiles and looks at the Professor as they finish yet another adventure together. Congratulations ! You have finished one of the eight possible endings !" , 
-    /*23*/ "\nYou saved yourself and quickly ran back to the spaceship to grab some harnesses and ropes but as soon as you reached the crater the rope began to slip and everyone fell off the crater leading to their death. Now you cannot retrieve more fuel yourself so you survive off of the supplies for your teammates and wait for reinforcements to take you back. You get on board and head back home for maybe another shot at colonizing Pluto. Congratulations ! You have completed one of the eight possible endings!"
+    /*23*/ "\nYou saved yourself and quickly ran back to the spaceship to grab some harnesses and ropes but as soon as you reached the crater the rope began to slip and everyone fell off the crater leading to their death. Now you cannot retrieve more fuel yourself so you survive off of the supplies for your teammates and wait for reinforcements to take you back. You get on board and head back home for maybe another shot at colonizing Pluto. Congratulations ! You have completed one of the eight possible endings!",
+    /*24*/ "\nYou all returned to the ship. After an hour sandstorm came to silence so you all proceeded back to the shelter.",
+    /*25*/"\n Now you have to decide whether to salvage something from the debris of the destroyed shelter and the spaceship , or send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission.",
+    /*26*/"\nEveryone agrees to your point and starts looking for resources we could salvage with help from their respective Geiger Counter.",
+    /*27*/"\nYou all discover a nuclear generator  brought to power the shelter.",
+    /*28*/"\nYou and Zack rush back to the ship with the generator and made the required changes to supply power from the generator to the engine.",
+    /*29*/"\nEveryone aboard this ship and you all returned to Earth. Congratulations! you have completed one of the eight possible endings!",
+    /*30*/"\nYou all started looking for the old spaceship and after a few hours, you finally located the old landing site.",
+    /*31*/"\nZack goes inside the shuttle and checks whether the communication system is working.",
+    /*32*/"\nSara sends the message to Space Federation for reinforcement and after three days reinforcements arrive and take you back home. Congratulations! you have completed one of the eight possible endings!"
     ]
 const protagonist = [
     /*0*/"\n\"Professor, it’s really nice to see you after so long. What brings you here to Metropolis today?\"" ,
@@ -50,7 +59,16 @@ const protagonist = [
     /*15*/"\n\"Come on guys ! let's pick up the pace and finish building the shelter before the storms hits. \"" ,
     /*16*/ "\n\"Everybody hold on ! don’t make any sudden movements ! some part of the harness is still intact.\"" ,
     /*17*/ "\n\" let’s use the leftover part of the harness to climb up one by one. I will go first , and hold the other end from top.\"" , 
-    /*18*/ "\n\"I will use the leftover harness to get back to the spaceship and bring the necessary equipments to rescue you all ! Hold on tight till I return ! \""
+    /*18*/ "\n\"I will use the leftover harness to get back to the spaceship and bring the necessary equipments to rescue you all ! Hold on tight till I return ! \"",
+    /*19*/ "\n\"I think we should abandon the shelter and run back to the ship, What all do you think ?\"",
+    /*20*/ "\n\"Alas! Our shelter has been destroyed and now I do not think it can be rebuilt.\"",
+    /*21*/ "\n\" It will be better if we all could salvage something helpful from this debris as there may be another sandstorm at any time.\"",
+    /*22*/ "\n\" My Geiger Counter is showing the presence of high radiations under this debris. Zack and Gilbert help me remove this debris and see what is beneath it.\"",
+    /*23*/ "\n\" I think we can power out the space engine with this generator, what do you think Zack is it possible.\"",
+    /*24*/ "\n\"Hoorah! We did it, now we can return home.\"",
+    /*25*/ "\n\"It will be better to look for the old spaceship instead of wasting time salvaging something from this debris.\"",
+    /*26*/ "\n\" Here it is the Appolo Lander 007 shuttle, Zack go on and sees if we can use its communication system.\"",
+    
     ]
 const professor = [
     /*0*/"\n\"I am currently a part of the team for our mission, 'A New Home' which is a team of 5 astronauts who will set up shelter, look for possible sources of fuel, and help begin the colonization of Pluto. But we are still one short on the team. Which reminds me, you can be the perfect candidate for the mission. Your aerospace knowledge and your experience can really come in handy. What do you say, another mission, like the old times?\"",
@@ -58,18 +76,28 @@ const professor = [
     /*2*/"\n\"Well, I guess I should thank you, captain, for going ahead with getting this crystal for research.\"" ,
     /*3*/"\n\"This fumes emitted by the crystal have a very high calorific value, almost similar to the fuel we use on our ship! We can even use it to heat the water and melt the polar ice caps. I suppose we should set up a shelter after making a heater to keep us warm and then set it up to melt the ice and snow for water.\"" ,
     /*4*/"\n\"According to the radar , it's moving at a speed of 30 m/s , we have 15 mins before it strikes us. \"" ,
-    /*5*/ "\n\"Rocks of the lower belt of the crater are rich in minerals , we can extract some fuel from them.\""
+    /*5*/ "\n\"Rocks of the lower belt of the crater are rich in minerals , we can extract some fuel from them.\"",
+    /*6*/"\n\"Yes , probably this would be the best choice.\"",
+    /*7*/"\n\"Yeah, even we have lost our all resources as they are under this debris, Zack see if we could communicate to the space federation and ask for help.\"",
+    
+
     ]
 const sara = [
-    /*0*/"\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\""
+    /*0*/"\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\"",
+    /*1*/"\n\" I think I can deal with morse code as I have studied about it during my college.\""
     ]
 const john = [
-    /*0*/"\n\"Hey Cap! Everyone is starving, how about we have a meal and call it a day.\""
+    /*0*/"\n\"Hey Cap! Everyone is starving, how about we have a meal and call it a day.\"",
+    /*1*/"\n\"As per my knowledge there is a old landing site nearby , we can try finding it and see if we can salvage some resources from it.\""
+
     ]
 const zack = [
     /*0*/"\n\"I can’t keep going on without food captain!\"",
     /*1*/"\n\"On it Skipper!\"",
-    /*2*/"\n\"We did it ! we have successfully retrieved the fuel and required resources to get our ship back on feet ! \""
+    /*2*/"\n\"We did it ! we have successfully retrieved the fuel and required resources to get our ship back on feet ! \"",
+    /*3*/"\n\"No, we cannot communicate as a sandstorm has destroyed our communication antenna.\"",
+    /*4*/"\n\"We can try doing this and as far as I know it should work.\"",
+    /*5*/"\n\"The communication system is functional but it uses morse code to communicate as it is an old one.\""
     ]
 function switchVoice(text,voice_name) {
   if (text){
@@ -276,7 +304,45 @@ const RescueMission_abandonHandler = {
             .getResponse();
     }
 }
-
+const Sandstorm_AbandonBuildHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_AbandonBuild';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[19] , "Joey")  + switchVoice(professor[6] , "Matthew")+ story[24] + switchVoice(protagonist[20] , "Joey") +switchVoice(professor[7] , "Matthew")+switchVoiceLang("en-GB",zack[3] , "Brian")+switchVoiceLang("en-AU",john[1] , "Russell")+ story[25];
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Decide whether to salvage something from the debris of the destroyed shelter and the spaceship or send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission.')
+            .getResponse();
+    }
+}
+const WayBack_ShelterDebrisHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_ShelterDebris';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[21] , "Joey")+ story[26] + switchVoice(protagonist[22] , "Joey") +story[27] +switchVoice(protagonist[23] , "Joey")+switchVoiceLang("en-GB",zack[4] , "Brian")+story[28]+switchVoice(protagonist[24] , "Joey")+ story[29];
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .getResponse();
+    }
+}
+const WayBack_OldLandingSiteHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_OldLandingSite';
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[25] , "Joey")  + story[30] + switchVoice(protagonist[26] , "Joey") +story[31]+switchVoiceLang("en-GB",zack[5] , "Brian")+switchVoice(sara[1] , "Salli")+ story[32];
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .getResponse();
+    }
+}
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -399,6 +465,9 @@ exports.handler = Alexa.SkillBuilders.custom()
         Sandstorm_buildHandler,
         RescueMission_rescueHandler,
         RescueMission_abandonHandler,
+        Sandstorm_AbandonBuildHandler,
+        WayBack_ShelterDebrisHandler,
+        WayBack_OldLandingSiteHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
