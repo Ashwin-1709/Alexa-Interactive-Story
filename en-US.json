@@ -19,6 +19,7 @@
                     "name": "IntroIntent",
                     "slots": [],
                     "samples": [
+                        "yes",
                         "start",
                         "launch the game",
                         "start the game",
@@ -167,6 +168,37 @@
                         "abandon the team and come back",
                         "abandon the team",
                         "leave to get reinforcements for the team"
+                    ]
+                },
+                {
+                    "name": "Sandstorm_AbandonBuild",
+                    "slots": [],
+                    "samples": [
+                        "leave the shelter and return to ship",
+                        "leave the shelter",
+                        "return to the ship",
+                        "abandon the shelter",
+                        "abandon the shelter and return to the ship"
+                    ]
+                },
+                {
+                    "name": "WayBack_ShelterDebris",
+                    "slots": [],
+                    "samples": [
+                        "salvage",
+                        "salvage something from  shelter",
+                        "salvage something from destroyed shelter",
+                        "salvage something from the debris",
+                        "salvage something from the debris of the destroyed shelter and the spaceship"
+                    ]
+                },
+                {
+                    "name": "WayBack_OldLandingSite",
+                    "slots": [],
+                    "samples": [
+                        "send a search party to look for old landing site",
+                        "look for old landing site",
+                        "send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission."
                     ]
                 }
             ],
