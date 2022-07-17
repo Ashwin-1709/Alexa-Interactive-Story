@@ -95,7 +95,7 @@ const zack = [
     /*0*/"\n\"I can’t keep going on without food captain!\"",
     /*1*/"\n\"On it Skipper!\"",
     /*2*/"\n\"We did it ! we have successfully retrieved the fuel and required resources to get our ship back on feet ! \"",
-    /*3*/"\n\"No, we cannot communicate as a sandstorm has destroyed our communication antenna.\"",
+    /*3*/"\n\"No, we cannot communicate as the sandstorm has destroyed our communication antenna.\"",
     /*4*/"\n\"We can try doing this and as far as I know it should work.\"",
     /*5*/"\n\"The communication system is functional but it uses morse code to communicate as it is an old one.\""
     ]
