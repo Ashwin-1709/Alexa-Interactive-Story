@@ -22,23 +22,26 @@ const story = [
     /*13*/"\nThe heater is constructed and now you can melt all the water in the ice caps and use it for irrigation and drinking! With a shelter, water, food supply, and an energy source harnessed, you successfully fulfilled your mission and sent back a call to earth to send more people and supplies to Pluto. Congratulations, you have completed one of the eight possible endings!",  
     /*14*/"\nLooking at the condition of your team, exhausted and famished, you decide to use whatever resources you have available right now to replenish yourselves and the team.",  
     /*15*/"\nSoon with all the resources exhausted and nothing left in sight, the team starts searching for alternate food sources on Pluto but come up empty-handed. As a last call for help, you contact the Federation for reinforcement and supplies. Due to logistical issues, by the time the supplies reach you, it’s too late. Congratulations, you have completed one of the eight possible endings!",   
-    /*16*/"\nYou land near the sandy dunes as the engine sputters one last time. The team heads out in the sweltering heat and has to quickly find a place to build a shelter. So they find shade behind a big rock and start building the shelter. But soon you observe a sandstorm approaching you." ,
-    /*17*/ "\nThe shelter is half-built and abandoning it now would mean losing all the resources. It’s your call whether to try and complete the shelter before the sandstorm hits or abandon the shelter and return to the ship." ,
-    /*18*/ "\nThrough a combined team effort they manage to finish building the shelter in just enough time to get in and shield themselves from the storm. After the storm is over, you decide to go and explore the nearby crater." ,
-    /*19*/ "\nAfter exploring and gathering the necessary resources from the crater, you decide to head back to the ship, while climbing back up the crater, one of the connected harnesses gets broken. ",
-    /*20*/ "\nEveryone tries to grab onto whatever they can and are left hanging by the walls of the crater. You, being on the top, have to decide whether to use the leftover harness to get back to the ship abandon the team and bring the necessary equipment from the ship to help them get back, or coordinate with your team to get them back up one by one knowing that the harness is already in a bad condition and time is crucial. " ,
-    /*21*/ "\nYou manage to get back to the top using the leftover harness, you carefully get your team to hold on to the harness and rescue them one by one. You return back to the ship along with your team. " ,
-    /*22*/ "\nHaving retrieved the required fuel and resources, you finally contact the federation and inform them about the abundant fuel and resources available and call for more people to come to Pluto. Protagonist smiles and looks at the Professor as they finish yet another adventure together. Congratulations ! You have finished one of the eight possible endings !" , 
-    /*23*/ "\nYou saved yourself and quickly ran back to the spaceship to grab some harnesses and ropes but as soon as you reached the crater the rope began to slip and everyone fell off the crater leading to their death. Now you cannot retrieve more fuel yourself so you survive off of the supplies for your teammates and wait for reinforcements to take you back. You get on board and head back home for maybe another shot at colonizing Pluto. Congratulations ! You have completed one of the eight possible endings!",
-    /*24*/ "\nYou all returned to the ship. After an hour sandstorm came to silence so you all proceeded back to the shelter.",
-    /*25*/"\n Now you have to decide whether to salvage something from the debris of the destroyed shelter and the spaceship , or send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission.",
-    /*26*/"\nEveryone agrees to your point and starts looking for resources we could salvage with help from their respective Geiger Counter.",
-    /*27*/"\nYou all discover a nuclear generator  brought to power the shelter.",
-    /*28*/"\nYou and Zack rush back to the ship with the generator and made the required changes to supply power from the generator to the engine.",
-    /*29*/"\nEveryone aboard this ship and you all returned to Earth. Congratulations! you have completed one of the eight possible endings!",
-    /*30*/"\nYou all started looking for the old spaceship and after a few hours, you finally located the old landing site.",
+    /*16*/"\nYou reach the sandy dunes as the engine sputters one last time. The team heads out in the sweltering heat and has to quickly find a place to build a shelter. So they find shade behind a big rock and start building the shelter. Soon you detect a sandstorm alert on your monitoring device." ,
+    /*17*/ "\nThe shelter is half-built and abandoning it now would mean losing most of the resources for the shelter and may lead to failure of the mission. It’s your call whether to try and complete the shelter before the sandstorm hits or abandon the shelter and return to the ship.\nMake a choice: Try to complete the shelter before the sandstorm hits\n or\n Abandon building the shelter and return to the ship" ,
+    /*18*/ "\nThrough a combined team effort they manage to finish building the shelter in just enough time to get in and shield themselves from the storm. After the storm is over, you decide to go and explore a nearby crater." ,
+    /*19*/ "\nThe team sets up a rope climbing harness and starts going in. After exploring and gathering the necessary resources from the crater, you decide to head back to the ship, while climbing back up the crater, one of the connected harnesses gets broken.",
+    /*20*/ "\nEveryone tries to grab onto whatever they can and are left hanging by the walls of the crater. You, being on the top, have to decide whether to use the leftover harness to get back to the ship and bring the necessary equipment to help them, or coordinate with your team to help them up one by one knowing that the harness is already in a bad condition and time is crucial.\nMake a decision: Figure out a way to rescue everyone before it’s too late\n or\n Save yourself first and leave to get reinforcements for the team." ,
+    /*21*/ "\nShe starts to slip but you catch her mid-air and help her up. As soon as you begin to climb out yourself, the rope snaps! You start falling but your rope harness gets stuck in a rock. You pull yourself up onto the small rock and call for help. The team had reached back with the new ropes and help you out the crater." ,
+    /*22*/ "\nHaving retrieved the required fuel and resources, you finally contact the federation and inform them about the abundant fuel and resources available and call for more people to come to Mars. You smile and looks at the Professor as you finish yet another adventure together. Congratulations! You have finished one of the eight possible endings!", 
+    /*23*/ "\nYou pulled yourself up and quickly ran back to the spaceship to grab some harnesses and ropes but when you reached the crater it was already too late. The rope had snapped and everyone fell to their death. Left with no team and no way to retrieve more fuel yourself, you survive off of the supplies for your teammates and call for reinforcements to take you back. You get on board and head back home for maybe another shot at colonizing Pluto. Congratulations ! You have completed one of the eight possible endings!",
+    /*24*/ "\nAll of you returned to the ship. After an hour, the sandstorm came to a halt and the team headed back to the shelter.",
+    /*25*/"\nSince you are the team lead you have to choose to salvage something from the debris of the destroyed shelter or send a search party to salvage some resources from the spaceship of a nearby landing site of some old mission.\nMake a choice: Try to make something from the ship and shelter debris\n or\nSend a search party to salvage resources from a nearby old mission landing site",
+    /*26*/"\nEveryone agrees and starts looking for things that could come in handy. Meanwhile, you bring out your Geiger Counter and start looking for radioactive material that may be under the debris.",
+    /*27*/"\nTo your surprise, you find the nuclear powered generator. It could generate enough energy to power the whole shelter, and luckily enough it wasn’t too damaged.",
+    /*28*/"\nJohn helps Zack fixing and modifying the generator while starting to make adjustments in the spaceship’s engine room to accommodate the new generator. Soon the generator is all patched up and ready to be used on the ship. You go ahead and reprogram the commands and attach the generator. You make a final prayer and hit start. The engine sputters and then comes to life.",
+    /*29*/"\nEveryone rejoices and then heads aboard this ship. You promise yourself this isn’t gonna be your last time on Pluto and return to Earth. Congratulations! you have completed one of the eight possible endings!",
+    /*30*/"\nWith John leading the search party, the team soon arrives at the old landing site. The spaceships stood upright with no sign of those lost martyrs who could never make it back home. ",
     /*31*/"\nZack goes inside the shuttle and checks whether the communication system is working.",
-    /*32*/"\nSara sends the message to Space Federation for reinforcement and after three days reinforcements arrive and take you back home. Congratulations! you have completed one of the eight possible endings!"
+    /*32*/"\nAnd to everyone’s surprise Sara manages to decrypt the code with relative ease and proceeds to send a S.O.S. message to the Space Federation for reinforcements. It takes them three days to arrive and everyone heads home back to Earth. You continue to train after returning, for a next shot at colonizing Pluto. Congratulations! you have completed one of the eight possible endings!",
+    /**33**/"\nThe Professor heads into the ship and brings back a weather report.",
+    /**34**/"\nYou start pulling up people one by one. The rope twists and unfurls so you bring up your speed. Only Sara is left now.",
+    /**35**/"\n\"... from our ship.\"Hmmm. John remembers something. He studied it in the History of Missions on Pluto class.",
     ]
 const protagonist = [
     /*0*/"\n\"Professor, it’s really nice to see you after so long. What brings you here to Metropolis today?\"" ,
@@ -55,49 +58,53 @@ const protagonist = [
     /*11*/"\n\"Guys, we have food sorted now! Congrats everyone on coming together and figuring out a way through hard times. Now it’s time we look for a fuel source to melt the ice caps and make this mission a success.\"",
     /*12*/"\n\"Zack, remember that old engine we have that we replaced with a new one after landing. Let’s fashion it into a nuclear-powered heater.\"",
     /*13*/"\n\"Team, let’s have a meal right now. We have some food left but I guess we’ll have to start looking for alternative sources too.\"" , 
-    /*14*/"\"Look out ! there is a sandstorm approaching from the south ! \"",
-    /*15*/"\n\"Come on guys ! let's pick up the pace and finish building the shelter before the storms hits. \"" ,
-    /*16*/ "\n\"Everybody hold on ! don’t make any sudden movements ! some part of the harness is still intact.\"" ,
-    /*17*/ "\n\" let’s use the leftover part of the harness to climb up one by one. I will go first , and hold the other end from top.\"" , 
-    /*18*/ "\n\"I will use the leftover harness to get back to the spaceship and bring the necessary equipments to rescue you all ! Hold on tight till I return ! \"",
-    /*19*/ "\n\"I think we should abandon the shelter and run back to the ship, What all do you think ?\"",
-    /*20*/ "\n\"Alas! Our shelter has been destroyed and now I do not think it can be rebuilt.\"",
-    /*21*/ "\n\" It will be better if we all could salvage something helpful from this debris as there may be another sandstorm at any time.\"",
-    /*22*/ "\n\" My Geiger Counter is showing the presence of high radiations under this debris. Zack and Gilbert help me remove this debris and see what is beneath it.\"",
-    /*23*/ "\n\" I think we can power out the space engine with this generator, what do you think Zack is it possible.\"",
-    /*24*/ "\n\"Hoorah! We did it, now we can return home.\"",
-    /*25*/ "\n\"It will be better to look for the old spaceship instead of wasting time salvaging something from this debris.\"",
-    /*26*/ "\n\" Here it is the Appolo Lander 007 shuttle, Zack go on and sees if we can use its communication system.\"",
-    
+    /*14*/"\n\"Guys! There is a sandstorm approaching from the south. We need to hurry up. What’s the ETA Professor?\"",
+    /*15*/"\n\"Come on team! Let's pick up the pace and finish building the shelter before the storm hits.\"" ,
+    /*16*/ "\n\"Everybody hold on! Don’t make any sudden movements! Some part of the harness is still intact. Nobody moves till I say.\"" ,
+    /*17*/ "\n\"Let’s use the leftover part of the harness to climb up one by one. I will go first, and hold the other end from top.\"" , 
+    /*18*/ "\n\"I will use the leftover harness to get back to the spaceship and bring the necessary equipment to rescue you all! Hold on tight till I return!\"",
+    /*19*/ "\n\"I think we won’t be able to finish this shelter in time. Heading back to the ship would be safer.\"",
+    /*20*/ "\n\"Holy cow! Our shelter has been destroyed! I don’t think we can rebuild it with what’s left. Oh God! It was stupid of me to go back. I should have tried to finish the shelter. I have failed you guys. I don't know what to do.\"",
+    /*21*/ "\n\"Yeah I think I agree with the Professor. Let’s dig up guys, and hurry. We don’t know if there may be another sandstorm soon.\"",
+    /*22*/ "\n\"My Geiger Counter is going off!. Hurry someone help me dig this up. There’s probably some radioactive fuel down here.\"",
+    /*23*/ "\n\"The fuel chamber seems intact but the pistons seem to have taken some damage. What do you think, Zack? Can we make it work?\"",
+    /*24*/ "\n\"Hurray! We did it! We did it as a team. We can go home now. Zack,  you crazy genius!\"",
+    /*25*/ "\n\"I think I agree with John. There’s no use wasting time and resources on digging up debris that is worthless now. We may as well start searching for those old ships and ask for help from the Federation.\"",
+    /*26*/ "\n\"Ah! Here it is the old Hades Shuttle from ‘09. It was a legendary vehicle and one of the first ones to make it to Pluto in a single trip. Zack, can you check the comms on the ship and if there’s any way we could make them work?\"",
+    /**27**/ "\n\"Haha Prof, you know me. I am always hungry, and that’s because of my giant risk appetite.\"",
+    /**28**/ "\n\"Well I am not hungry anymore that’s for sure!\"",
+    /**29**/ "\n\"My team’s safety is my first priority Professor. Everyone! Quick! Head back to the ship ASAP!\"",
     ]
 const professor = [
     /*0*/"\n\"I am currently a part of the team for our mission, 'A New Home' which is a team of 5 astronauts who will set up shelter, look for possible sources of fuel, and help begin the colonization of Pluto. But we are still one short on the team. Which reminds me, you can be the perfect candidate for the mission. Your aerospace knowledge and your experience can really come in handy. What do you say, another mission, like the old times?\"",
     /*1*/"\n\"I think you should stay away from the crystal as we don’t know what it is. Those fumes look dangerous.\"",
     /*2*/"\n\"Well, I guess I should thank you, captain, for going ahead with getting this crystal for research.\"" ,
     /*3*/"\n\"This fumes emitted by the crystal have a very high calorific value, almost similar to the fuel we use on our ship! We can even use it to heat the water and melt the polar ice caps. I suppose we should set up a shelter after making a heater to keep us warm and then set it up to melt the ice and snow for water.\"" ,
-    /*4*/"\n\"According to the radar , it's moving at a speed of 30 m/s , we have 15 mins before it strikes us. \"" ,
-    /*5*/ "\n\"Rocks of the lower belt of the crater are rich in minerals , we can extract some fuel from them.\"",
-    /*6*/"\n\"Yes , probably this would be the best choice.\"",
-    /*7*/"\n\"Yeah, even we have lost our all resources as they are under this debris, Zack see if we could communicate to the space federation and ask for help.\"",
+    /*4*/"\n\"According to my calculations, it's moving at a speed of around 30 meters per second, we have 15 minutes before it strikes us.\"" ,
+    /*5*/ "\n\"Rocks deep in the lower belt of the crater are rich in minerals. I think we can extract some fuel from them, but it's going to be risky and very hard to reach.\"",
+    /*6*/"\n\"But we’ll lose all our resources!\"",
+    /*7*/"\n\"Don’t be so hard on yourself Captain! I think we may be able to salvage something for the debris. Meanwhile, I think we should call the Federation and ask for help.\"",
+    /**8**/"\n\"Are you all right, Captain?\"",
     
 
     ]
 const sara = [
     /*0*/"\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\"",
-    /*1*/"\n\" I think I can deal with morse code as I have studied about it during my college.\""
+    /*1*/"\n\"Encryption you say? Let me give it a shot. I have been studying cryptography since I was a kid. I used to crack codes for fun.\"",
+    /**2**/"\n\"My hands are slipping captain! I can’t hold on!\"",
     ]
 const john = [
     /*0*/"\n\"Hey Cap! Everyone is starving, how about we have a meal and call it a day.\"",
-    /*1*/"\n\"As per my knowledge there is a old landing site nearby , we can try finding it and see if we can salvage some resources from it.\""
+    /*1*/"\n\"Captain! I remember reading about this area in a class during our training. I think we aren’t far from an old landing site. They didn’t fly those old ships back because the mission failed but I think the ships might still work.\""
 
     ]
 const zack = [
     /*0*/"\n\"I can’t keep going on without food captain!\"",
     /*1*/"\n\"On it Skipper!\"",
-    /*2*/"\n\"We did it ! we have successfully retrieved the fuel and required resources to get our ship back on feet ! \"",
-    /*3*/"\n\"No, we cannot communicate as the sandstorm has destroyed our communication antenna.\"",
-    /*4*/"\n\"We can try doing this and as far as I know it should work.\"",
-    /*5*/"\n\"The communication system is functional but it uses morse code to communicate as it is an old one.\""
+    /*2*/"\n\"We did it! We have successfully retrieved the fuel and required resources to get our ship back on foot!\"",
+    /*3*/"\n\"I am afraid Professor, that won’t be possible. The transmission devices and the antenna were damaged severely when we landed. There’s no way we could communicate with them from our ship.\"",
+    /*4*/"\n\"Oh, I can make it more than work Captain. I can modify it to power the spaceship’s engine directly and our ship would be good to go! But it’s gonna take some time.\"",
+    /*5*/"\n\"The comms are functional but it uses an old encryption code over the message. I can’t override it and without it we won’t be able to send any meaningful messages to the Federation.\""
     ]
 function switchVoice(text,voice_name) {
   if (text){
@@ -162,7 +169,7 @@ const LandingSpot_SandyHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LandingSpot_Sandy';
     },
     handle(handlerInput) {
-        const speakOutput = story[16] + switchVoice(protagonist[14] , "Joey") + switchVoice(professor[4] , "Matthew") + story[17];
+        const speakOutput = story[16] + switchVoice(protagonist[14] , "Joey") + story[33] + switchVoice(professor[4] , "Matthew") + story[17];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -267,7 +274,7 @@ const Sandstorm_buildHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_build';
     },
     handle(handlerInput) {
-        const speakOutput = switchVoice(protagonist[15] , "Joey") + story[18] + switchVoice(professor[5] , "Matthew") + story[19] + switchVoice(protagonist[16] , "Joey") + story[20];
+        const speakOutput = switchVoice(protagonist[15] , "Joey") + story[18] + switchVoice(professor[5] , "Matthew") + switchVoice(protagonist[27] , "Joey") + story[19] + switchVoice(protagonist[16] , "Joey") + story[20];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -281,7 +288,7 @@ const RescueMission_rescueHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_rescue';
     },
     handle(handlerInput) {
-        const speakOutput = switchVoice(protagonist[17] , "Joey") + story[21] + switchVoiceLang("en-GB",zack[2] , "Brian") + story[22];
+        const speakOutput = switchVoice(protagonist[17] , "Joey") + story[34] + switchVoice(sara[2] , "Salli") + story[21] + switchVoiceLang("en-GB",zack[2] , "Brian") + switchVoice(professor[8] , "Matthew") + switchVoice(protagonist[28] , "Joey") + "chuckled the Captain. " + story[22];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -310,7 +317,7 @@ const Sandstorm_AbandonBuildHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_AbandonBuild';
     },
     handle(handlerInput) {
-        const speakOutput = switchVoice(protagonist[19] , "Joey")  + switchVoice(professor[6] , "Matthew")+ story[24] + switchVoice(protagonist[20] , "Joey") +switchVoice(professor[7] , "Matthew")+switchVoiceLang("en-GB",zack[3] , "Brian")+switchVoiceLang("en-AU",john[1] , "Russell")+ story[25];
+        const speakOutput = switchVoice(protagonist[19] , "Joey")  + switchVoice(professor[6] , "Matthew") + switchVoice(protagonist[29] , "Joey") + story[24] + switchVoice(protagonist[20] , "Joey") + switchVoice(professor[7] , "Matthew") + switchVoiceLang("en-GB",zack[3] , "Brian") + story[35] + switchVoiceLang("en-AU", john[1] , "Russell") + story[25];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Decide whether to salvage something from the debris of the destroyed shelter and the spaceship or send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission.')
@@ -323,7 +330,7 @@ const WayBack_ShelterDebrisHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_ShelterDebris';
     },
     handle(handlerInput) {
-        const speakOutput = switchVoice(protagonist[21] , "Joey")+ story[26] + switchVoice(protagonist[22] , "Joey") +story[27] +switchVoice(protagonist[23] , "Joey")+switchVoiceLang("en-GB",zack[4] , "Brian")+story[28]+switchVoice(protagonist[24] , "Joey")+ story[29];
+        const speakOutput = switchVoice(protagonist[21] , "Joey")+ story[26] + switchVoice(protagonist[22] , "Joey") + story[27] + switchVoice(protagonist[23] , "Joey") + switchVoiceLang("en-GB",zack[4] , "Brian") + story[28] + switchVoice(protagonist[24] , "Joey") + story[29];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Hurray ! you have completed one of the eight endings.')
@@ -336,7 +343,7 @@ const WayBack_OldLandingSiteHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_OldLandingSite';
     },
     handle(handlerInput) {
-        const speakOutput = switchVoice(protagonist[25] , "Joey")  + story[30] + switchVoice(protagonist[26] , "Joey") +story[31]+switchVoiceLang("en-GB",zack[5] , "Brian")+switchVoice(sara[1] , "Salli")+ story[32];
+        const speakOutput = switchVoice(protagonist[25] , "Joey")  + story[30] + switchVoice(protagonist[26] , "Joey") +story[31]+switchVoiceLang("en-GB",zack[5] , "Brian") + "Sara speaks up suddenly. " + switchVoice(sara[1] , "Salli")+ story[32];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Hurray ! you have completed one of the eight endings.')
