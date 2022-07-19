@@ -163,6 +163,9 @@
                     "name": "RescueMission_rescue",
                     "slots": [],
                     "samples": [
+                        "rescue everyone",
+                        "figure out a way to rescue everyone",
+                        "rescue",
                         "try to bring everyone back",
                         "coordinate to bring team back one by one",
                         "coordinate with team to bring everyone back",
@@ -176,6 +179,9 @@
                     "name": "RescueMission_abandon",
                     "slots": [],
                     "samples": [
+                        "leave to get reinforcements",
+                        "save yourself first",
+                        "save yourselves first",
                         "get back to the ship and bring necessary reinforcements",
                         "get back to the ship and bring necessary equipments",
                         "get back to the ship",
@@ -191,6 +197,8 @@
                     "name": "Sandstorm_AbandonBuild",
                     "slots": [],
                     "samples": [
+                        "abandon building the shelter",
+                        "abandon building",
                         "leave the shelter and return to ship",
                         "leave the shelter",
                         "return to the ship",
@@ -202,6 +210,13 @@
                     "name": "WayBack_ShelterDebris",
                     "slots": [],
                     "samples": [
+                        "try making something from the ship and shelter debris",
+                        "Try to make something from the ship",
+                        "Try to make something from debris",
+                        "Try to make something from the ship and shelter debris",
+                        "shelter debris",
+                        "make something from the debris",
+                        "make something from the ship",
                         "salvage",
                         "salvage something from  shelter",
                         "salvage something from destroyed shelter",
@@ -213,6 +228,8 @@
                     "name": "WayBack_OldLandingSite",
                     "slots": [],
                     "samples": [
+                        "search party",
+                        "send search party",
                         "send a search party to look for old landing site",
                         "look for old landing site",
                         "send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission."
