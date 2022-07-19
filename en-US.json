@@ -19,6 +19,10 @@
                     "name": "IntroIntent",
                     "slots": [],
                     "samples": [
+                        "try the game again",
+                        "try again",
+                        "restart",
+                        "restart the game",
                         "yes",
                         "start",
                         "launch the game",
