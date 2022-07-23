@@ -1,0 +1,83 @@
+{
+  "type": "APL",
+  "version": "1.6",
+  "description": "This APL document places text on the screen and includes a button that sends the skill a message when selected. The button is a pre-defined responsive component from the alexa-layouts package.",
+  "import": [
+    {
+      "name": "alexa-layouts",
+      "version": "1.3.0"
+    }
+  ],
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "height": "100vh",
+        "width": "100vw",
+        "items": [
+          {
+            "type": "Text",
+            "id": "helloTextComponent",
+            "height": "75%",
+            "text": "Make a choice",
+            "textAlign": "center",
+            "textAlignVertical": "center",
+            "paddingLeft": "@spacingSmall",
+            "paddingRight": "@spacingSmall",
+            "paddingTop": "@spacingXLarge",
+            "style": "textStyleBody"
+          }]
+      },
+      
+          {
+            "type": "AlexaButton",
+            "id": "SandyDunes",
+            "height": "100vh",
+             "width": "100vw",
+            "buttonText": "Sandy Dunes",
+            "primaryAction": [
+              
+              {
+                "type": "SendEvent",
+                "arguments": [
+                  "user clicked the button"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "AlexaButton",
+            "id": "MountainValley",
+            "buttonText": "Mountain Valley",
+            "primaryAction": [
+              
+              {
+                "type": "SendEvent",
+                "arguments": [
+                  "user clicked the button"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "AlexaButton",
+            "id": "Crater",
+            "buttonText": "Crater",
+            "primaryAction": [
+              
+              {
+                "type": "SendEvent",
+                "arguments": [
+                  "user clicked the button"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+
+    
+  }
