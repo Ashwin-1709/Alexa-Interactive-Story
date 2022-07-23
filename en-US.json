@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "new home",
+            "invocationName": "a new home",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -153,6 +153,9 @@
                     "name": "LandingSpot_Sandy",
                     "slots": [],
                     "samples": [
+                        "move to the sandy dunes",
+                        "relocate to the sandy dunes",
+                        "go to the sandy dunes",
                         "sand",
                         "sand dunes",
                         "land in the sand",
@@ -260,6 +263,57 @@
                         "send a search party to look for old landing site",
                         "look for old landing site",
                         "send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission."
+                    ]
+                },
+                {
+                    "name": "LandingSpot_Crater",
+                    "slots": [],
+                    "samples": [
+                        "land the ship at crater",
+                        "at the crater",
+                        "land at the crater",
+                        "land at crater",
+                        "crater",
+                        "the crater",
+                        "lets land at the crater"
+                    ]
+                },
+                {
+                    "name": "SquareOne_StayBack",
+                    "slots": [],
+                    "samples": [
+                        "wait near the crater",
+                        "stay near the crater",
+                        "wait back at the crater",
+                        "wait at the crater",
+                        "stay the crater",
+                        "stay back at the crater"
+                    ]
+                },
+                {
+                    "name": "OldLife_Alternate",
+                    "slots": [],
+                    "samples": [
+                        "alternate",
+                        "grow crops using alternate ways",
+                        "try finding other ways",
+                        "try finding other ways to farm",
+                        "find other ways to farm",
+                        "grow crops using other ways",
+                        "find alternate ways to farm"
+                    ]
+                },
+                {
+                    "name": "OldLife_Reincarnate",
+                    "slots": [],
+                    "samples": [
+                        "reincarnate",
+                        "reincarnate ancient life form",
+                        "ressurect the aline",
+                        "bring back the alien",
+                        "bring back the alien to life",
+                        "reincarnate the alien",
+                        "reincarnate the life form"
                     ]
                 }
             ],
