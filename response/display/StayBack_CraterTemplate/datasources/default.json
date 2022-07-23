@@ -1,0 +1,24 @@
+{
+  "cardsLayoutTemplateData": {
+    "type": "object",
+    "properties": {
+      "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+      "headerTitle": "",
+      "headerSubtitle": "",
+      "headerAttributionImage": "",
+      "primaryText": "Make a choice: Reincarnate the alien life form or Find alternate ways to farm the land for food",
+      "listItems": [
+        {
+          "primaryText": "Reincarnate Alien",
+          "secondaryText": "Alien",
+          "thumbnailImage": "https://1075914428.rsc.cdn77.org/data/images/full/44632/aliens.jpg?w=617&h=359"
+        },
+        {
+          "primaryText": "A way to farm",
+          "secondaryText": "Farm",
+          "thumbnailImage": "https://www.popsci.com/uploads/2019/01/29/FZD6JLWMCZDYNSD4VFWNO3777Y.jpg?auto=webp"
+        }
+      ]
+    }
+  }
+}
