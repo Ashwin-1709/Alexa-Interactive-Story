@@ -4,10 +4,13 @@
  * session persistence, api calls, and more.
  * */
 const Alexa = require('ask-sdk-core');
+const buttonDocument = require('./button.json');
+const BUTTON_TOKEN = 'ButtonToken';
+
 const intro = "Welcome! You are selected to be part of the first batch of astronauts going to Pluto. Experience the journey with your fellow astronauts filled with many challenges. Are you ready to embark on this exciting adventure?!"
 const story = [
     /*0*/"\nIt’s been a year since you retired from the Space Federation and are now settled in Metropolis. It was a pleasant surprise as you were out for just another evening walk when you encountered your old friend, Professor Gilbert, from the Federation." ,
-    /*1*/"\nYou smile and shake hands with the Professor. You accepted the mission.\n After taking the proposal, you return to the Space Federation to train for the mission. You will be leading the team consisting of yourself, Professor Gilbert, Zack (The Engineer), John (The Astronaut), and Sara (The Doctor). After going through rigorous training, today is the launch day. The shuttle blasts off to space, and the journey begins. As soon as the rocket escapes the Earth's atmosphere, one of its engines fails. You tell everyone to keep calm and send Zack to check if there is a way to get the engine back online. Zack informs you that the engine is completely blown off but using the one working engine, they can still reach Pluto but cannot take off again till the engine is repaired or replaced. You enter Pluto's orbit. You are posed with the decision of whether to land on the sandy dunes or the valley of mountains.\nMake a decision: The Sandy Dunes\n or\n  The Valley of Mountains." ,
+    /*1*/"\nYou smile and shake hands with the Professor. You accepted the mission.\n After taking the proposal, you return to the Space Federation to train for the mission. You will be leading the team consisting of yourself, Professor Gilbert, Zack (The Engineer), John (The Astronaut), and Sara (The Doctor). After going through rigorous training, today is the launch day. The shuttle blasts off to space, and the journey begins. As soon as the rocket escapes the Earth's atmosphere, one of its engines fails. You tell everyone to keep calm and send Zack to check if there is a way to get the engine back online. Zack informs you that the engine is completely blown off but using the one working engine, they can still reach Pluto but cannot take off again till the engine is repaired or replaced. You enter Pluto's orbit. You are posed with the decision of whether to land on the sandy dunes or the valley of mountains or at the crater.\nMake a decision: The Sandy Dunes\n or\n  The Valley of Mountains\n or\n The Crater." ,
     /*2*/"\nZack nods and goes into the cockpit to set in the coordinates. You have finally landed in the valley. The temperature outside is -50 degrees, skies filled with darkness, nothing but empty lands stretching for as far as you can see.",
     /*3*/"\nYou decide to wear your protective suits and start exploring. You enter a cave. While exploring the cave, you find a strange transparent crystal emitting fumes near the top of a stone." ,
     /*4*/"\nDo you think you should take the Professor’s advice and stay away or collect some of it for research later?\n Take a choice: Take the crystal back to the spaceship for research\n or\n Follow the Professor’s advice and continue exploration." ,
@@ -42,6 +45,15 @@ const story = [
     /**33**/"\nThe Professor heads into the ship and brings back a weather report.",
     /**34**/"\nYou start pulling up people one by one. The rope twists and unfurls so you bring up your speed. Only Sara is left now.",
     /**35**/"\n\"... from our ship.\"Hmmm. John remembers something. He studied it in the History of Missions on Pluto class.",
+    /***36***/"\nThe ship makes a wobbly descent at the Crater. The atmosphere is hot and, the land underneath seems bubbling as if suppressing a lot of energy.",
+    /***37***/"\nThe team spreads out and starts to look for a possible fuel or food source in the Crater. Suddenly the search is disturbed by a distress signal on the team comms. It was Sara who had initiated it.",
+    /***38***/"\nDo you think you should relocate as Sara advises and go to the Sandy Dunes or, is it possible to stay at the resource-rich Crater and figure out a way to survive safely near the volcano?\n Make a choice:\n Relocate to the Sandy Dunes\n or\n Stay back at the Crater.",
+    /***39***/"\nThe team brings out mining rigs and starts testing the layers of rock underneath, searching for a possible sign of the fuel. It takes a day, after which John finds a potential location for the  fuel. The team installs the rigs and starts drilling. In a few hours, the pump sputters out the first few drops of the fuel.",
+    /***40***/"\nEveryone turns towards the Professor in shock.",
+    /***41***/"\nDo you think that the ancient life form will help the humans and you should try to meet them and learn their ways or Is it better to find an alternative way to survive and grow plants in this sandy terrrain? Make a choice:\n Reincarnate the alien life form\n or\n Find alternate ways to farm the land for food and resources.",
+    /***42***/"\nYou decide against reincarnating the alien life form and continue to search for a possible way to farm. However, the fuel is an efficient energy source, as the days go by and your supplies start diminishing. The team sends the Federation a call for help, but by the time the Federation reaches, everyone has already died of hunger. Congrats! you have reached one of the possible endings! If you want to try again just say, \"Restart the game\"\n and here's a hint for your next attempt: Always be open to new experiences. You never know what's coming your way, till you explore! Enjoy playing!",
+    /***43***/"\nSara and the Professor set up the cryo-chamber and proceeded with the cloning and regeneration process. The chamber sparkles with electricity as the intensity increases by the second. After a while, the cryo-chamber comes to a rest. The Professor opens the door, and a pale-skinned creature, with large eyes, makes its way out of the chamber and takes its first few steps. The alien turns toward you and speaks in a raspy voice.",
+    /**44***/"\nAfter knowing the composition of the special manure, you agree to the alien's demand and send it back to its endless sleep. Now your people can grow crops, and with the abundance of fossil fuel, you call more people on Pluto to colonize as you have completed your mission successfully. Congratulations! you have completed one of the possible endings! You should try to experiences as many mindblowing things as you can in a lifetime. Always follow your gut feeling and take leaps of faith. If you want to play another storyline, just say, \"Restart the game\". Enjoy playing!",
     ]
 const protagonist = [
     /*0*/"\n\"Professor, it’s really nice to see you after so long. What brings you here to Metropolis today?\"" ,
@@ -74,6 +86,17 @@ const protagonist = [
     /**27**/ "\n\"Haha Prof, you know me. I am always hungry, and that’s because of my giant risk appetite.\"",
     /**28**/ "\n\"Well I am not hungry anymore that’s for sure!\"",
     /**29**/ "\n\"My team’s safety is my first priority Professor. Everyone! Quick! Head back to the ship ASAP!\"",
+    /***30***/"\n\"Let’s head for the crater. I think that place would be rich with minerals, and we may end up finding fuel there. Zack, take us to The Crater.\"",
+    /***31***/"\n\"Woah! That landing was quite scary, but thankfully, everyone is safe, I presume. It seems the engine has taken quite a bit of damage. Zack, I need it fixed as soon as possible.\"",
+    /***32***/"\n\"Team, let's go out and try to find something useful here, and I need to figure out what’s all this rumbling underground. If it is what I think it is, we may have got ourselves the jackpot for crash landing here.\"",
+    /***33***/"\n\"What happened Sara?! Are you all right?\"",
+    /***34***/"\n\"This is the volcano that I’d been looking for! It’s the Piccard Mons! I’ve studied its eruption patterns. It erupts every 100 years and the last time it did was 26 years back. So, if my math is correct, we have a good 74 years before we need to relocate. \"",
+    /***35***/"\n\"Well then! Let’s start looking for it!\"",
+    /***36***/"\n\"Well done, guys! We did it! All we need now is to figure out how to grow food on this planet. I wonder how the ancient people used to live.\"",
+    /***37***/"\n\"No, I think we should not risk bringing them back as we aren’t aware of their nature, and they may turn out to be hostile. I can’t compromise the integrity of this mission for your experiments, Professor.\"",
+    /***38***/"\n\"I think I can take on an alien or two. Bring it on, Professor. Let’s learn the legends of this land, straight from the horse’s mouth.\"",
+    /***39***/"\n\"We are from the planet Earth. Our natural resources are on the brink of exhaustion, and we’ve been appointed to find other planets for rehabilitation and colonization. We have chosen Pluto, but now that we are here, we don’t know how to make the land fertile.\"",
+    /***40***/"\n\"Do you mind sharing the composition of the manure? This could be a matter of life and death for our species to survive.\"",
     ]
 const professor = [
     /*0*/"\n\"I am currently a part of the team for our mission, 'A New Home' which is a team of 5 astronauts who will set up shelter, look for possible sources of fuel, and help begin the colonization of Pluto. But we are still one short on the team. Which reminds me, you can be the perfect candidate for the mission. Your aerospace knowledge and your experience can really come in handy. What do you say, another mission, like the old times?\"",
@@ -85,6 +108,9 @@ const professor = [
     /*6*/"\n\"But we’ll lose all our resources!\"",
     /*7*/"\n\"Don’t be so hard on yourself Captain! I think we may be able to salvage something for the debris. Meanwhile, I think we should call the Federation and ask for help.\"",
     /**8**/"\n\"Are you all right, Captain?\"",
+    /***9***/"\n\"The Piccard Mons! I can’t believe how I missed it. It was theorized that an ancient civilization lived here, which, after the meteor hit, got fossilized over the years. That fossil fuel could be of great use to us.\"",
+    /***10***/"\n\"You don’t have to wonder, Captain!\"",
+    /***11***/"\n\"It’s been my life’s work, and after years of research, Sara and I have finally constructed a cryo-chamber. Its purpose is to clone a being using its DNA. I suppose we can use the fossil fuel to extract traces of the old aliens’ DNA. Who’s up for meeting a native Plutonian, born aeons ago, reincarnated?\"",
     
 
     ]
@@ -92,19 +118,28 @@ const sara = [
     /*0*/"\n\"Wait! Don’t panic! I have something in my first aid kit that may help temporarily, but we’ll have to head back to the ship to treat it properly, or there’ll be a risk of it spreading, and we’ll have to perform an amputation if we don’t reach in time.\"",
     /*1*/"\n\"Encryption you say? Let me give it a shot. I have been studying cryptography since I was a kid. I used to crack codes for fun.\"",
     /**2**/"\n\"My hands are slipping captain! I can’t hold on!\"",
+    /***3***/"\n\"I am, but not for long. I followed the pulse underground to locate its source, leading me to an active volcano. I don’t think staying here and building a shelter is safe. We should relocate. The Sandy Dunes are nearby. What do you say, captain?\"", 
     ]
 const john = [
     /*0*/"\n\"Hey Cap! Everyone is starving, how about we have a meal and call it a day.\"",
     /*1*/"\n\"Captain! I remember reading about this area in a class during our training. I think we aren’t far from an old landing site. They didn’t fly those old ships back because the mission failed but I think the ships might still work.\""
 
     ]
+const alien = [
+    /*0*/"\n\"It’s been so long since I felt like this. Alive. I remember this land, but it has changed so much. Why did you bring me back? What do you seek from me? From Pluto?\"",
+    /*1*/"\n\"This land is rich with minerals but has been infertile for centuries, but our ancestors crafted a way to make manure that helps the crops grow steadily early on and then the soil provides enough nutrients for it to continue.\"",
+    /*2*/"\n\" I will share it, but I have a demand that needs to be met. I will only share the composition with you if I am promised a painless death. I do not wish to live among unknown people, in an unknown time. I leave this planet for you to live, grow, prosper, and not make the same mistakes as you did back home.\"",
+
+    ]
+
 const zack = [
     /*0*/"\n\"I can’t keep going on without food captain!\"",
     /*1*/"\n\"On it Skipper!\"",
     /*2*/"\n\"We did it! We have successfully retrieved the fuel and required resources to get our ship back on foot!\"",
     /*3*/"\n\"I am afraid Professor, that won’t be possible. The transmission devices and the antenna were damaged severely when we landed. There’s no way we could communicate with them from our ship.\"",
     /*4*/"\n\"Oh, I can make it more than work Captain. I can modify it to power the spaceship’s engine directly and our ship would be good to go! But it’s gonna take some time.\"",
-    /*5*/"\n\"The comms are functional but it uses an old encryption code over the message. I can’t override it and without it we won’t be able to send any meaningful messages to the Federation.\""
+    /*5*/"\n\"The comms are functional but it uses an old encryption code over the message. I can’t override it and without it we won’t be able to send any meaningful messages to the Federation.\"",
+    /***6***/"\n\"In no time captain! Let me do my magic.\"",
     ]
 function switchVoice(text,voice_name) {
   if (text){
@@ -129,29 +164,115 @@ const LaunchRequestHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LaunchTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "headlineTemplateData": {
+                            "type": "object",
+                            "objectId": "headlineSample",
+                            "properties": {
+                                "backgroundImage": {
+                                    "contentDescription": null,
+                                    "smallSourceUrl": null,
+                                    "largeSourceUrl": null,
+                                    "sources": [
+                                        {
+                                            "url": "https://th-thumbnailer.cdn-si-edu.com/pUMjqpRXGguG4cbp-FERDeH5kKI=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/be/d4/bed4dfa3-55db-45ca-a7cd-18bf96028180/15n_fm2015_plutocrescentviajhuapl_live-cr.jpg",
+                                            "size": "large"
+                                        }
+                                    ]
+                                },
+                                "textContent": {
+                                    "primaryText": {
+                                        "type": "PlainText",
+                                        "text": "Welcome to the game! Are you ready to play 'A New Home' ?"
+                                    }
+                                },
+                                "logoUrl": "",
+                                "hintText": "Say, \"I am ready!\""
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 };
 
 const IntroIntentHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'IntroIntent';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'IntroIntent')
+            ||(Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'restart'));
     },
     handle(handlerInput) {
         const speakOutput = story[0] + switchVoice(protagonist[0] , "Joey") + switchVoice(professor[0] , "Matthew") + story[1];
-
-        return handlerInput.responseBuilder
+         let responseBuilder = handlerInput.responseBuilder;
+        
+        return responseBuilder
             .speak(speakOutput)
             .reprompt('Make a decision: The Sandy Dunes\n or\n the The Valley of Mountains')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/introTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Choose Landing Spot",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Sandy Dunes",
+                                        "secondaryText": "SandyDunes",
+                                        "thumbnailImage": "https://earthsky.org/upl/2019/05/Bagnold-Dune-Field-Mars-Curiosity-12-18-2015-2-800x450.jpg"
+                                    },
+                                    {
+                                        "primaryText": "Mountain Valley",
+                                        "secondaryText": "MountainValley",
+                                        "thumbnailImage": "https://th.bing.com/th/id/OIP.fTuqmdrGcFRHV2k0tATBeAHaEK?pid=ImgDet&rs=1"
+                                    },
+                                    {
+                                        "primaryText": "Crater",
+                                        "secondaryText": "crater",
+                                        "thumbnailImage": "https://cdn.zmescience.com/wp-content/uploads/2016/01/91951-004-D8086FB6.jpg"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 };
 
 const LandingSpot_ValleyHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LandingSpot_Valley';
+        return  (
+      (Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+        Alexa.getIntentName(handlerInput.requestEnvelope) ===
+          'LandingSpot_Valley') ||
+      (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'MountainValley')
+    );
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[1] , "Joey")+ story[2] + switchVoice(protagonist[2] , "Joey") + story[3] + switchVoice(professor[1] , "Matthew") + switchVoice(protagonist[3] , "Joey") + story[4]; 
@@ -159,14 +280,53 @@ const LandingSpot_ValleyHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Take a choice: Take the crystal back to the spaceship for research\n or\n Follow the Professor’s advice and continue exploration.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: Take the crystal back to the spaceship or Follow the Professor’s advice",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Take crystal",
+                                        "secondaryText": "take_crystal",
+                                        "thumbnailImage": "https://media.istockphoto.com/photos/underground-river-picture-id493981406?k=20&m=493981406&s=612x612&w=0&h=rnV2pV3rZxexYeLm3WtxeENmXkoUpPjtTbBo9ef02E4="
+                                    },
+                                    {
+                                        "primaryText": "Explore",
+                                        "thumbnailImage": "https://www.frommers.com/system/media_items/attachments/000/863/336/s980/BlackwaterRaftingCompany_NZ.jpg?1541005283",
+                                        "secondaryText": "continue_explore"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 };
 
 const LandingSpot_SandyHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LandingSpot_Sandy';
+        return (
+      (Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+        Alexa.getIntentName(handlerInput.requestEnvelope) ===
+          'LandingSpot_Sandy') ||
+      (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'SandyDunes')
+    );
     },
     handle(handlerInput) {
         const speakOutput = story[16] + switchVoice(protagonist[14] , "Joey") + story[33] + switchVoice(professor[4] , "Matthew") + story[17];
@@ -174,15 +334,259 @@ const LandingSpot_SandyHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('It’s your call whether to try and complete the shelter before the sandstorm hits or abandon the shelter and return to the ship.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: try and complete the shelter or abandon the shelter and return to the ship",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Complete shelter",
+                                        "secondaryText": "complete_shelter",
+                                        "thumbnailImage": "https://i.insider.com/5979023e552be51c008b6b64?width=1000&format=jpeg&auto=webp"
+                                    },
+                                    {
+                                        "primaryText": "Abandon",
+                                        "thumbnailImage": "https://static.timesofisrael.com/www/uploads/2021/10/000_9PG3CZ.jpg",
+                                        "secondaryText": "ship_dunes"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
+            .getResponse();
+    }
+};
+
+const LandingSpot_CraterHandler = {
+    canHandle(handlerInput) {
+        return (
+      (Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+        Alexa.getIntentName(handlerInput.requestEnvelope) ===
+          'LandingSpot_Crater') ||
+      (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'crater')
+    );
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[30] , "Joey")+ story[36] + switchVoice(protagonist[31] , "Joey") + switchVoiceLang("en-GB",zack[6] , "Brian") + switchVoice(protagonist[32] , "Joey") + story[37] + switchVoice(protagonist[33] , "Joey") + switchVoice(sara[3] , "Salli") + story[38]; 
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Make a choice: Relocate to the Sandy Dunes or Stay back at the Crater')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: Relocate to the Sandy Dunes or Stay back at the Crater",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Relocate",
+                                        "secondaryText": "SandyDunes",
+                                        "thumbnailImage": "https://earthsky.org/upl/2019/05/Bagnold-Dune-Field-Mars-Curiosity-12-18-2015-2-800x450.jpg"
+                                    },
+                                    {
+                                        "primaryText": "Stay back",
+                                        "thumbnailImage": "https://cdn.zmescience.com/wp-content/uploads/2016/01/91951-004-D8086FB6.jpg",
+                                        "secondaryText": "StayBack"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 };
 
 
+
+const OldLife_ReincarnateHandler = {
+    canHandle(handlerInput) {
+        return (
+            (Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'OldLife_Reincarnate')
+            ||(Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'Alien')
+            );
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[38] , "Joey")+ story[43] + switchVoice(alien[0] , "Ivy") + switchVoice(protagonist[39] , "Joey") + switchVoice(alien[1] , "Ivy") + switchVoice(protagonist[40] , "Joey") + switchVoice(alien[2] , "Ivy") + story[44] ; 
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Make a choice: Reincarnate the alien life form or Find alternate ways to farm the land for food and resources.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "Always follow your gut feeling and take leaps of faith!",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
+            .getResponse();
+    }
+};
+const OldLife_AlternateHandler = {
+    canHandle(handlerInput) {
+        return(
+            ( Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'OldLife_Alternate')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'Farm')
+            );
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[37] , "Joey")+ story[42]; 
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Make a choice: Reincarnate the alien life form or Find alternate ways to farm the land for food and resources.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "Always be open to new experiences. You never know what's coming your way, till you explore! ",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
+            .getResponse();
+    }
+};
+const SquareOne_StayBackHandler = {
+    canHandle(handlerInput) {
+        return (
+            (Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+        Alexa.getIntentName(handlerInput.requestEnvelope) ===
+          'SquareOne_StayBack') ||
+      (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'StayBack')
+    );
+    },
+    handle(handlerInput) {
+        const speakOutput = switchVoice(protagonist[34] , "Joey")+ switchVoice(professor[9] , "Matthew") + switchVoice(protagonist[35] , "Joey") + story[39] + switchVoice(protagonist[36] , "Joey") + switchVoice(professor[10] , "Matthew") + story[40] + switchVoice(professor[11] , "Matthew") + story[41] ; 
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Make a choice: Reincarnate the alien life form or Find alternate ways to farm the land for food and resources.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/StayBack_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Make a choice: Reincarnate the alien life form or Find alternate ways to farm",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Reincarnate Alien",
+                                        "secondaryText": "Alien",
+                                        "thumbnailImage": "https://1075914428.rsc.cdn77.org/data/images/full/44632/aliens.jpg?w=617&h=359"
+                                    },
+                                    {
+                                        "primaryText": "A way to farm",
+                                        "secondaryText": "Farm",
+                                        "thumbnailImage": "https://www.popsci.com/uploads/2019/01/29/FZD6JLWMCZDYNSD4VFWNO3777Y.jpg?auto=webp"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
+            .getResponse();
+    }
+};
+
 const ExplorationOfCaves_TakeCrystalHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ExplorationOfCaves_TakeCrystal';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ExplorationOfCaves_TakeCrystal')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'take_crystal'));
     },
     handle(handlerInput) {
         const speakOutput = story[5] + switchVoice(protagonist[4] , "Matthew") + " You Scream. " + switchVoice(sara[0] , "Salli") + story[6];
@@ -190,44 +594,146 @@ const ExplorationOfCaves_TakeCrystalHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Make a decision: Try making it back to the ship before the frostbite spreads or Amputate your hand to prevent the frostbite from spreading.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: Try making it back to the ship or Amputate your hand to prevent frostbite",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Back to the ship",
+                                        "secondaryText": "ship_frostbite",
+                                        "thumbnailImage": "https://img.redbull.com/images/c_crop,w_4000,h_2000,x_0,y_463,f_auto,q_auto/c_scale,w_1200/redbullcom/2019/11/13/3991fcf6-00d9-4df3-bd7a-b581bbf18bcf/analog-astronauts"
+                                    },
+                                    {
+                                        "primaryText": "Amputate hand",
+                                        "thumbnailImage": "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/Frostbite-Stages/Deep_frostbite-1296x728-slide3.jpg?w=1155&h=1528",
+                                        "secondaryText": "amputate_frostbite"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 };
 
 const LifeOrDeath_AmputateHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LifeOrDeath_Amputate';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LifeOrDeath_Amputate')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'amputate_frostbite'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[5] , "Joey") + story[7] + switchVoice(professor[2], "Matthew") + switchVoice(protagonist[6] , "Joey") + switchVoice(professor[3], "Matthew") + story[8];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .reprompt('Hurray ! You have completed one of the possible endings !')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "Don't let fear cloud your judgement and make meaningful sacrifices! No one can stop you from achieving your goals",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 
 const LifeOrDeath_ReachShipHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LifeOrDeath_ReachShip';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'LifeOrDeath_ReachShip')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'ship_frostbite'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[7] , "Joey") + story[9];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .reprompt('Hurray ! You have completed one of the possible endings !')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "Don't be afraid to take tough decisions. A mission is successful only after a lot of sacrifices!",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 
 const ExplorationOfCaves_FollowAdviceHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ExplorationOfCaves_FollowAdvice';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ExplorationOfCaves_FollowAdvice')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'continue_explore'));
     },
     handle(handlerInput) {
         const speakOutput = story[10] + switchVoiceLang("en-AU",john[0] , "Russell") + " says John. " + switchVoice(protagonist[8] , "Joey") + story[11];
@@ -235,43 +741,145 @@ const ExplorationOfCaves_FollowAdviceHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Make a decision: Replenish yourself and the team right now and plan it out later\n or\n Think long-term and ration resources for later use.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: Eat right now and plan it later or Think long-term and ration resources",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Plan it later",
+                                        "secondaryText": "plan_later",
+                                        "thumbnailImage": "https://assets-natgeotv.fnghub.com/POD/12957.jpg"
+                                    },
+                                    {
+                                        "primaryText": "Ration resources",
+                                        "thumbnailImage": "https://www.automacaoindustrial.info/wp-content/uploads/2022/02/checklist-scaled.jpg",
+                                        "secondaryText": "ration_resources"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 };
 
 const Survival_LongTermHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Survival_LongTerm';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Survival_LongTerm')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'ration_resources'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[9] , "Joey") + switchVoiceLang("en-GB",zack[0] , "Brian") + switchVoice(protagonist[10] , "Joey") + story[12] + switchVoice(protagonist[11] , "Joey") + "You remember about the old nuclear-powered engine in your ship. " + switchVoice(protagonist[12] , "Joey") + switchVoiceLang("en-GB",zack[1] , "Brian") + story[13];  
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .reprompt('Hurray ! You have completed one of the possible endings !')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "Every small decision counts. A good leader always makes long-term decisions!",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 
 const Survival_PlanLaterHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Survival_PlanLater';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Survival_PlanLater')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'plan_later'));
     },
     handle(handlerInput) {
         const speakOutput = story[14] + switchVoice(protagonist[13] , "Joey") + story[15];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! You have completed one of the eight possible endings !')
+            .reprompt('Hurray ! You have completed one of the possible endings !')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "Avoid making rash and sudden decisions. A calm and calculated decision can be crucial for success.",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 const Sandstorm_buildHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_build';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_build')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'complete_shelter'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[15] , "Joey") + story[18] + switchVoice(professor[5] , "Matthew") + switchVoice(protagonist[27] , "Joey") + story[19] + switchVoice(protagonist[16] , "Joey") + story[20];
@@ -279,74 +887,275 @@ const Sandstorm_buildHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Decide whether to use the leftover harness to get back to the ship abandon the team and bring the necessary equipment from the ship to help them get back, or coordinate with your team to get them back up one by one knowing that the harness is already in a bad condition and time is crucial.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: Bring the necessary equipment from the ship or Coordinate and help the team first",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Bring harness",
+                                        "secondaryText": "ship_harness",
+                                        "thumbnailImage": "https://media.istockphoto.com/photos/astronaut-man-walks-in-the-desert-with-mountains-in-mars-journey-to-picture-id846499682?k=20&m=846499682&s=170667a&w=0&h=YEKTZ1luUlrttor4UTZ_V-xuA-vsb2nlldwSvbod6X0="
+                                    },
+                                    {
+                                        "primaryText": "Rescue team",
+                                        "thumbnailImage": "https://ichef.bbci.co.uk/news/999/cpsprodpb/432F/production/_121499171_lgrescue3.jpg",
+                                        "secondaryText": "rescue_team"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 const RescueMission_rescueHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_rescue';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_rescue')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'rescue_team'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[17] , "Joey") + story[34] + switchVoice(sara[2] , "Salli") + story[21] + switchVoiceLang("en-GB",zack[2] , "Brian") + switchVoice(professor[8] , "Matthew") + switchVoice(protagonist[28] , "Joey") + "chuckled the Captain. " + story[22];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .reprompt('Hurray ! you have completed one of the endings.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "The team always comes first no matter what and a true leader is nothing without their team.",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 
 const RescueMission_abandonHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_abandon';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'RescueMission_abandon')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'ship_harness'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[18] , "Joey") + story[23];
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .reprompt('Hurray ! you have completed one of the endings.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "It's the job of the captain to ensure the safety of their team. Leaving no one behind should be your first priority.",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 const Sandstorm_AbandonBuildHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_AbandonBuild';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'Sandstorm_AbandonBuild')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'ship_dunes'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[19] , "Joey")  + switchVoice(professor[6] , "Matthew") + switchVoice(protagonist[29] , "Joey") + story[24] + switchVoice(protagonist[20] , "Joey") + switchVoice(professor[7] , "Matthew") + switchVoiceLang("en-GB",zack[3] , "Brian") + story[35] + switchVoiceLang("en-AU", john[1] , "Russell") + story[25];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt('Decide whether to salvage something from the debris of the destroyed shelter and the spaceship or send a search party to salvage some resources from the debris of a nearby crash landing site of some old mission.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/LandingSpot_CraterTemplate",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://mediaproxy.salon.com/width/1200/https://media.salon.com/2022/04/planet-pluto-0405221.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "primaryText": "Make a choice: Salvage something from the debris or Send a search party",
+                                "listItems": [
+                                    {
+                                        "primaryText": "Salvage debris",
+                                        "secondaryText": "debris",
+                                        "thumbnailImage": "https://i2-prod.mirror.co.uk/incoming/article26823878.ece/ALTERNATES/s615/0_NASA.jpg"
+                                    },
+                                    {
+                                        "primaryText": "Search party",
+                                        "thumbnailImage": "https://www.cnet.com/a/img/resize/ffa8d9620426359385ec85a78ee4cdc204550cb5/2022/04/28/c058a94c-1a52-4ce2-8419-dc4eba06131e/surface-1200x675.jpg?auto=webp&fit=crop&height=630&width=1200",
+                                        "secondaryText": "search_party"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 const WayBack_ShelterDebrisHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_ShelterDebris';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_ShelterDebris')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'debris'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[21] , "Joey")+ story[26] + switchVoice(protagonist[22] , "Joey") + story[27] + switchVoice(protagonist[23] , "Joey") + switchVoiceLang("en-GB",zack[4] , "Brian") + story[28] + switchVoice(protagonist[24] , "Joey") + story[29];  
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .reprompt('Hurray ! you have completed one of the endings.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "You may end up being wrong sometimes, but you should use it as motivation to improve, to try again and do better!",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
 const WayBack_OldLandingSiteHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_OldLandingSite';
+        return ((Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WayBack_OldLandingSite')
+            || (Alexa.getRequestType(handlerInput.requestEnvelope) ===
+        'Alexa.Presentation.APL.UserEvent' &&
+        handlerInput.requestEnvelope.request.source.id === 'search_party'));
     },
     handle(handlerInput) {
         const speakOutput = switchVoice(protagonist[25] , "Joey")  + story[30] + switchVoice(protagonist[26] , "Joey") +story[31]+switchVoiceLang("en-GB",zack[5] , "Brian") + "Sara speaks up suddenly. " + switchVoice(sara[1] , "Salli")+ story[32];
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Hurray ! you have completed one of the eight endings.')
+            .reprompt('Hurray ! you have completed one of the endings.')
+            .addDirective(
+                {
+                    "type": "Alexa.Presentation.APL.RenderDocument",
+                    "token": "documentToken",
+                    "document": {
+                        "src": "doc://alexa/apl/documents/PositiveEnd",
+                        "type": "Link"
+                    },
+                    "datasources": {
+                        "cardsLayoutTemplateData": {
+                            "type": "object",
+                            "properties": {
+                                "backgroundImage": "https://static01.nyt.com/images/2022/04/05/science/02sci-exoplanets7/02sci-exoplanets7-superJumbo.jpg",
+                                "headerTitle": "",
+                                "headerSubtitle": "",
+                                "headerAttributionImage": "",
+                                "primaryText": "Congratulations! You have completed one of the possible endings!"
+                            }
+                        },
+                        "additionalData": {
+                            "type": "object",
+                            "properties": {
+                                "hintText": "A mission is a team effort and trusting your teammates goes a long way. Small failures shouldn't dishearten you, but motivate you to try again.",
+                                "buttonText": "Restart the game",
+                                "buttonId": "restart"
+                            }
+                        }
+                    }
+                }
+            )
             .getResponse();
     }
 }
@@ -463,6 +1272,10 @@ exports.handler = Alexa.SkillBuilders.custom()
         IntroIntentHandler,
         LandingSpot_ValleyHandler,
         LandingSpot_SandyHandler,
+        LandingSpot_CraterHandler,
+        SquareOne_StayBackHandler,
+        OldLife_ReincarnateHandler,
+        OldLife_AlternateHandler,
         ExplorationOfCaves_TakeCrystalHandler,
         LifeOrDeath_AmputateHandler,
         LifeOrDeath_ReachShipHandler,
